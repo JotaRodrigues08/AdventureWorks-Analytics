@@ -1,0 +1,6 @@
+```text
+   # Forçar o Git a ignorar cache e arquivos locais do Power BI
+   **/KnownReportProperties.json
+   **/.DataConnector
+   **/LocalSettings.json
+   **/UserWorkspaceSettings.json
