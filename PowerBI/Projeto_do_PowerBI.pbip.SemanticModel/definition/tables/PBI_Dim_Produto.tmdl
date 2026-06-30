@@ -1,0 +1,83 @@
+table PBI_Dim_Produto
+	lineageTag: 7b984b70-0ffc-4de1-bb62-1f61b96dbb73
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: ccdd09ec-577b-43c6-be3c-a1dd870799fb
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome_Produto
+		dataType: string
+		lineageTag: 66be073e-d633-42c9-99fb-4a1bf1a97115
+		summarizeBy: none
+		sourceColumn: Nome_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Produto
+		dataType: string
+		lineageTag: ba1e013f-8465-4a1d-97b9-1827115dd276
+		summarizeBy: none
+		sourceColumn: Codigo_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cor
+		dataType: string
+		lineageTag: 6d4ec883-762f-4396-b5b9-734ac81c5f37
+		summarizeBy: none
+		sourceColumn: Cor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custo_Padrao
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 1618281e-4cb3-4bdb-bb76-f29c5aadfc07
+		summarizeBy: none
+		sourceColumn: Custo_Padrao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column Preco_Lista
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: f81af4e5-ba7a-4263-8bd6-3d70ed389db9
+		summarizeBy: none
+		sourceColumn: Preco_Lista
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column SubCategoria
+		dataType: string
+		lineageTag: 802f7e5b-ec84-4cf7-bb5f-7c26d7e93acf
+		summarizeBy: none
+		sourceColumn: SubCategoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: cfd626b2-84f7-41e7-bf64-bb1adafce375
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PBI_Dim_Produto = m
+		mode: import
+		source =
+				let
+				  Origem = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),
+				  #"Navegação 1" = Origem{[Schema = "dbo", Item = "PBI_Dim_Produto"]}[Data]
+				in
+				  #"Navegação 1"
+

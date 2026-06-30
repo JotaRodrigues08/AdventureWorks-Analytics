@@ -1,0 +1,46 @@
+table PBI_Dim_Cliente
+	lineageTag: 11cd3c67-82f1-4853-91fa-fb04e4458cc0
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: ff8c25f5-24b1-418d-ad4a-1d84d2bc84e0
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TerritoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: 515d987a-7ebe-4170-bbb0-3eccf0ed69d3
+		summarizeBy: none
+		sourceColumn: TerritoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeCliente
+		dataType: string
+		lineageTag: 7eac8b10-e5b2-4ee8-8644-906e03e7677e
+		summarizeBy: none
+		sourceColumn: NomeCliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCliente
+		dataType: string
+		lineageTag: 266afede-935f-4fd4-996e-20e5b5ee187e
+		summarizeBy: none
+		sourceColumn: TipoCliente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PBI_Dim_Cliente = m
+		mode: import
+		source =
+				let
+				  Origem = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),
+				  #"Navegação 1" = Origem{[Schema = "dbo", Item = "PBI_Dim_Cliente"]}[Data]
+				in
+				  #"Navegação 1"
+
