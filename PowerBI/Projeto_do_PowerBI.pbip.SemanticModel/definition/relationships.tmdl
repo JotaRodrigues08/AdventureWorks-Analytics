@@ -3,11 +3,6 @@ relationship 8b054c2f-336a-429b-816c-993a7c2eda53
 	fromColumn: PBI_Dim_Calendario.Data
 	toColumn: LocalDateTable_11a0b440-b764-43bd-8da0-eed8e61b4fb9.Date
 
-relationship d7797275-99fd-4057-9122-a67bdef63d01
-	joinOnDateBehavior: datePartOnly
-	fromColumn: PBI_Fato_Vendas.DataPedido
-	toColumn: LocalDateTable_1b57b74e-b7d6-44d1-a6f7-39c1b7f64076.Date
-
 relationship AutoDetected_b516afa3-8845-4c06-a1ab-77d0238a316c
 	fromColumn: PBI_Fato_Vendas.CustomerID
 	toColumn: PBI_Dim_Cliente.CustomerID
@@ -15,4 +10,8 @@ relationship AutoDetected_b516afa3-8845-4c06-a1ab-77d0238a316c
 relationship AutoDetected_359947a0-2d5b-4643-aad3-392bdfd25a5d
 	fromColumn: PBI_Fato_Vendas.ProductID
 	toColumn: PBI_Dim_Produto.ProductID
+
+relationship 34b9289d-4328-fc52-fcd2-64403cd476a9
+	fromColumn: PBI_Fato_Vendas.DataPedido
+	toColumn: PBI_Dim_Calendario.Data
 

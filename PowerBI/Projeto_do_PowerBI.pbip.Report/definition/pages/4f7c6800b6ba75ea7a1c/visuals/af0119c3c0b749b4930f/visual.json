@@ -1,0 +1,128 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "af0119c3c0b749b4930f",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 640,
+    "width": 656
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PBI_Dim_Produto"
+                    }
+                  },
+                  "Property": "Nome_Produto"
+                }
+              },
+              "queryRef": "PBI_Dim_Produto.Nome_Produto",
+              "nativeQueryRef": "Nome_Produto"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Faturamento_Total"
+                }
+              },
+              "queryRef": "_Medidas.$ Faturamento_Total",
+              "nativeQueryRef": "$ Faturamento_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Faturamento_Liquido"
+                }
+              },
+              "queryRef": "_Medidas.$ Faturamento_Liquido",
+              "nativeQueryRef": "$ Faturamento_Liquido"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "$ Faturamento_Total"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6ceeb559d839007c9721",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "PBI_Dim_Produto"
+              }
+            },
+            "Property": "Nome_Produto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a5f1f82f82248737faed",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "$ Faturamento_Total"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ce41d7813af9ce821258",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "$ Faturamento_Liquido"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

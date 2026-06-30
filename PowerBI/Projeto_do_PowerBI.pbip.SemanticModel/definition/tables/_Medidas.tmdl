@@ -1,0 +1,48 @@
+table _Medidas
+	lineageTag: 92e81126-6863-43b4-b14b-db55a53178d5
+
+	measure '$ Faturamento_Total' = ```
+			// Faturamento Total 
+			SUMX(
+			    PBI_Fato_Vendas,
+			        PBI_Fato_Vendas[QtdPedido] * PBI_Fato_Vendas[PreçoUnitario]
+			)
+			```
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: b4bef239-d4f9-40d8-b118-d92daca67915
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '$ Faturamento_Liquido' =
+			// qtd * preço *(1- % desconto)
+			SUMX(
+			    PBI_Fato_Vendas,
+			    PBI_Fato_Vendas[QtdPedido] * PBI_Fato_Vendas[PreçoUnitario] * (1- PBI_Fato_Vendas[DescontoUnitario]))
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 77faa5b4-99b8-468c-bc30-3222f38decef
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: f73d7141-8f20-40d2-bf57-ea7086dd38f8
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Medidas = m
+		mode: import
+		source =
+				let
+				  Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t])
+				in
+				  Origem
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

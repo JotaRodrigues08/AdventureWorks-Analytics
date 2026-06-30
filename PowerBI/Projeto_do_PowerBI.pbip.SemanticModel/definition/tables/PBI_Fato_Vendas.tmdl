@@ -17,11 +17,6 @@ table PBI_Fato_Vendas
 		summarizeBy: none
 		sourceColumn: DataPedido
 
-		variation Variation
-			isDefault
-			relationship: d7797275-99fd-4057-9122-a67bdef63d01
-			defaultHierarchy: LocalDateTable_1b57b74e-b7d6-44d1-a6f7-39c1b7f64076.'Hierarquia de datas'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -92,7 +87,7 @@ table PBI_Fato_Vendas
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
 	column DescontoUnitario
-		dataType: decimal
+		dataType: double
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
 		lineageTag: 29143a94-999f-4919-841b-eb75692a7396
 		summarizeBy: sum
@@ -108,7 +103,7 @@ table PBI_Fato_Vendas
 				let
 				  Origem = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),
 				  #"Navegação 1" = Origem{[Schema = "dbo", Item = "PBI_Fato_Vendas"]}[Data],
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"DataPedido", type date}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"DataPedido", type date}, {"DescontoUnitario", type number}})
 				in
 				  #"Tipo Alterado"
 

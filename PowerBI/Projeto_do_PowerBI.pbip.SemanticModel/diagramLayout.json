@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 243.33557687702435
+          },
+          "nodeIndex": "PBI_Dim_Calendario",
+          "nodeLineageTag": "3d0e48d2-af11-4b98-a137-14014e531234",
+          "size": {
+            "height": 290.96121378262529,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 827.77933493158287,
+            "y": 210.79595405791574
+          },
+          "nodeIndex": "PBI_Dim_Cliente",
+          "nodeLineageTag": "11cd3c67-82f1-4853-91fa-fb04e4458cc0",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 412.40639977209969,
+            "y": 579.46879992403319
+          },
+          "nodeIndex": "PBI_Dim_Produto",
+          "nodeLineageTag": "7b984b70-0ffc-4de1-bb62-1f61b96dbb73",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 423.36176349028938,
+            "y": 102.06576546747006
+          },
+          "nodeIndex": "PBI_Fato_Vendas",
+          "nodeLineageTag": "ed51dd8a-1e04-4fc7-aba6-0f678d58d194",
+          "size": {
+            "height": 353.72343905077156,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 63.287087723234038,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}
