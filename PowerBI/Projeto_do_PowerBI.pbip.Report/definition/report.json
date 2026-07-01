@@ -50,6 +50,17 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Copilot_20260630_224530-remove9925579246303581.png",
+          "path": "Copilot_20260630_224530-remove9925579246303581.png",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {

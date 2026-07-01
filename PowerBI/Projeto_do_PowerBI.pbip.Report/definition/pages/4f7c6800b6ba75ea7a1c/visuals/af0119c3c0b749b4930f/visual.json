@@ -3,9 +3,9 @@
   "name": "af0119c3c0b749b4930f",
   "position": {
     "x": 0,
-    "y": 176,
+    "y": 168,
     "z": 1000,
-    "height": 896,
+    "height": 912,
     "width": 1328,
     "tabOrder": 2000
   },
@@ -141,7 +141,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Vendas Analíticas  '"
+                  "Value": "'Faturamento por Produto'"
                 }
               }
             },

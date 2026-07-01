@@ -45,6 +45,9 @@ table _Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
+	measure '! Cabeçalho Painel' = "Visão Analítica"
+		lineageTag: f02bc5b2-6365-4680-8687-f83843c0345d
+
 	column 'Coluna 1'
 		dataType: string
 		isHidden
