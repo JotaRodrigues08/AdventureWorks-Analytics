@@ -27,11 +27,12 @@ table PBI_Dim_Calendario
 		annotation UnderlyingDateTimeDataType = Date
 
 	column Ano
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: ca918571-6fdc-4369-b8b8-10ea76bea227
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Ano
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 
@@ -49,6 +50,9 @@ table PBI_Dim_Calendario
 		lineageTag: eb79d381-8b2d-42c8-a5e4-16d7374021de
 		summarizeBy: none
 		sourceColumn: NomeMes
+		sortByColumn: MesNum
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

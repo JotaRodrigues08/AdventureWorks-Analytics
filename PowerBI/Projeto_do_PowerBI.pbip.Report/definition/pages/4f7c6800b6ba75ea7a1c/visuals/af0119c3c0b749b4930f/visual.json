@@ -3,10 +3,11 @@
   "name": "af0119c3c0b749b4930f",
   "position": {
     "x": 0,
-    "y": 0,
-    "z": 0,
-    "height": 640,
-    "width": 656
+    "y": 176,
+    "z": 1000,
+    "height": 896,
+    "width": 1328,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "tableEx",
@@ -55,6 +56,34 @@
               },
               "queryRef": "_Medidas.$ Faturamento_Liquido",
               "nativeQueryRef": "$ Faturamento_Liquido"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Vendas Internet B2C"
+                }
+              },
+              "queryRef": "_Medidas.$ Vendas Internet B2C",
+              "nativeQueryRef": "$ Vendas Internet B2C"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Vendas Corporativas B2B"
+                }
+              },
+              "queryRef": "_Medidas.$ Vendas Corporativas B2B",
+              "nativeQueryRef": "$ Vendas Corporativas B2B"
             }
           ]
         }
@@ -69,7 +98,7 @@
                     "Entity": "_Medidas"
                   }
                 },
-                "Property": "$ Faturamento_Total"
+                "Property": "$ Vendas Corporativas B2B"
               }
             },
             "direction": "Descending"
@@ -77,52 +106,86 @@
         ]
       }
     },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "17D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Vendas Analíticas  '"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9A8C98'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6ceeb559d839007c9721",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "PBI_Dim_Produto"
-              }
-            },
-            "Property": "Nome_Produto"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "a5f1f82f82248737faed",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Medidas"
-              }
-            },
-            "Property": "$ Faturamento_Total"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ce41d7813af9ce821258",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Medidas"
-              }
-            },
-            "Property": "$ Faturamento_Liquido"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

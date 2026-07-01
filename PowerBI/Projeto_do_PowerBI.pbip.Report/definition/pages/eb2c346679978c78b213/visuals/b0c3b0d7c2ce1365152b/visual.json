@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "b0c3b0d7c2ce1365152b",
+  "position": {
+    "x": 544,
+    "y": 144,
+    "z": 1000,
+    "height": 304,
+    "width": 304
+  },
+  "visual": {
+    "visualType": "card",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Vendas Internet B2C"
+                }
+              },
+              "queryRef": "_Medidas.$ Vendas Internet B2C",
+              "nativeQueryRef": "$ Vendas Internet B2C"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

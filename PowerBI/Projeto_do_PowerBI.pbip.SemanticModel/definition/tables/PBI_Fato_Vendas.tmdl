@@ -49,10 +49,10 @@ table PBI_Fato_Vendas
 		annotation SummarizationSetBy = Automatic
 
 	column OnlineOrderFlag
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
+		dataType: int64
+		formatString: 0
 		lineageTag: 7ea81846-9ffc-43ea-8a62-8b1ef8cb66d4
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: OnlineOrderFlag
 
 		annotation SummarizationSetBy = Automatic
@@ -97,15 +97,24 @@ table PBI_Fato_Vendas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
+	column 'Tipo Venda'
+		dataType: string
+		lineageTag: 4dee7357-3bfc-4837-84c9-0ad08f54bcb9
+		summarizeBy: none
+		sourceColumn: Tipo Venda
+
+		annotation SummarizationSetBy = Automatic
+
 	partition PBI_Fato_Vendas = m
 		mode: import
 		source =
 				let
 				  Origem = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),
 				  #"Navegação 1" = Origem{[Schema = "dbo", Item = "PBI_Fato_Vendas"]}[Data],
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"DataPedido", type date}, {"DescontoUnitario", type number}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"DataPedido", type date}, {"DescontoUnitario", type number}, {"OnlineOrderFlag", Int64.Type}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "Tipo Venda", each if [OnlineOrderFlag] = 0 then "B2B" else if [OnlineOrderFlag] = 1 then "B2C" else null, type text)
 				in
-				  #"Tipo Alterado"
+				    #"Coluna Condicional Adicionada"
 
 	annotation PBI_NavigationStepName = Navegação
 

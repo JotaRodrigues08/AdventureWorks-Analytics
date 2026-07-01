@@ -23,6 +23,28 @@ table _Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
+	measure '$ Vendas Internet B2C' =
+			
+			CALCULATE(
+			    [$ Faturamento_Liquido],
+			         PBI_Fato_Vendas[OnlineOrderFlag] = 1
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 3a618bce-3648-4252-acdc-937364be114e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '$ Vendas Corporativas B2B' =
+			
+			CALCULATE(
+			    [$ Faturamento_Liquido],
+			         PBI_Fato_Vendas[OnlineOrderFlag] = 0
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: c7bf39e4-4464-457c-8b9f-2d77aea95bb9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
 	column 'Coluna 1'
 		dataType: string
 		isHidden
