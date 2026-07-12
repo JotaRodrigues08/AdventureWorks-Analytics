@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 0,
-            "y": 243.33557687702435
+            "y": 294.36845961075937
           },
           "nodeIndex": "PBI_Dim_Calendario",
           "nodeLineageTag": "3d0e48d2-af11-4b98-a137-14014e531234",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 827.77933493158287,
-            "y": 210.79595405791574
+            "y": 261.82883679165082
           },
           "nodeIndex": "PBI_Dim_Cliente",
           "nodeLineageTag": "11cd3c67-82f1-4853-91fa-fb04e4458cc0",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 412.40639977209969,
-            "y": 579.46879992403319
+            "y": 630.50168265776824
           },
           "nodeIndex": "PBI_Dim_Produto",
           "nodeLineageTag": "7b984b70-0ffc-4de1-bb62-1f61b96dbb73",
@@ -50,12 +50,25 @@
         {
           "location": {
             "x": 423.36176349028938,
-            "y": 102.06576546747006
+            "y": 153.09864820120509
           },
           "nodeIndex": "PBI_Fato_Vendas",
           "nodeLineageTag": "ed51dd8a-1e04-4fc7-aba6-0f678d58d194",
           "size": {
             "height": 353.72343905077156,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1111.779334931583,
+            "y": 313.7343999620166
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "92e81126-6863-43b4-b14b-db55a53178d5",
+          "size": {
+            "height": 224,
             "width": 234
           },
           "zIndex": 0

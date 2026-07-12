@@ -4,10 +4,10 @@
   "position": {
     "x": 1328,
     "y": 176,
-    "z": 4000,
+    "z": 3000,
     "height": 400,
     "width": 592,
-    "tabOrder": 5000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "pieChart",
@@ -310,6 +310,32 @@
                       "Value": "'#9A8C98'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'por Canal de Venda'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'$ Faturamento'"
                 }
               }
             }

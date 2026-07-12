@@ -36,7 +36,7 @@ table PBI_Dim_Produto
 
 	column Custo_Padrao
 		dataType: decimal
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
 		lineageTag: 1618281e-4cb3-4bdb-bb76-f29c5aadfc07
 		summarizeBy: none
 		sourceColumn: Custo_Padrao

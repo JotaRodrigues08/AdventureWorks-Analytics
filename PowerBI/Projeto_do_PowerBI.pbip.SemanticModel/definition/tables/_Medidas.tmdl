@@ -18,7 +18,7 @@ table _Medidas
 			SUMX(
 			    PBI_Fato_Vendas,
 			    PBI_Fato_Vendas[QtdPedido] * PBI_Fato_Vendas[PreçoUnitario] * (1- PBI_Fato_Vendas[DescontoUnitario]))
-		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
 		lineageTag: 77faa5b4-99b8-468c-bc30-3222f38decef
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -45,7 +45,7 @@ table _Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure '! Cabeçalho Painel' = "Visão Analítica"
+	measure '! Cabeçalho Painel' = "Acompanhamento Vendas"
 		lineageTag: f02bc5b2-6365-4680-8687-f83843c0345d
 
 	column 'Coluna 1'

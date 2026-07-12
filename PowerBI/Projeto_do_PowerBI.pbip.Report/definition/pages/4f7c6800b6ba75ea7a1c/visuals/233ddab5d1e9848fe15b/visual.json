@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "4d7f87acbb8a9aadb2ce",
+  "name": "233ddab5d1e9848fe15b",
   "position": {
-    "x": 1328,
+    "x": 0,
     "y": 592,
-    "z": 6000,
+    "z": 8000,
     "height": 479.99999999999994,
-    "width": 592,
-    "tabOrder": 7000
+    "width": 1312,
+    "tabOrder": 6000
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "hundredPercentStackedBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,15 +20,33 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "PBI_Dim_Produto"
+                      "Entity": "PBI_Dim_Calendario"
                     }
                   },
-                  "Property": "Categoria"
+                  "Property": "NomeMes"
                 }
               },
-              "queryRef": "PBI_Dim_Produto.Categoria",
-              "nativeQueryRef": "Categoria",
+              "queryRef": "PBI_Dim_Calendario.NomeMes",
+              "nativeQueryRef": "NomeMes",
               "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PBI_Fato_Vendas"
+                    }
+                  },
+                  "Property": "Faixa Margem Operacional"
+                }
+              },
+              "queryRef": "PBI_Fato_Vendas.Faixa Margem Operacional",
+              "nativeQueryRef": "Faixa Margem Operacional"
             }
           ]
         },
@@ -50,33 +68,16 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Medidas"
-                  }
-                },
-                "Property": "$ Faturamento_Liquido"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
-      "legend": [
+      "labels": [
         {
           "properties": {
-            "fontSize": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "16D"
+                  "Value": "true"
                 }
               }
             }
@@ -91,7 +92,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#4A4E69'"
+                      "Value": "'#9E2A2B'"
                     }
                   }
                 }
@@ -111,12 +112,12 @@
                             "Entity": "PBI_Fato_Vendas"
                           }
                         },
-                        "Property": "OnlineOrderFlag"
+                        "Property": "Faixa Margem Operacional"
                       }
                     },
                     "Right": {
                       "Literal": {
-                        "Value": "0L"
+                        "Value": "'1. Péssima'"
                       }
                     }
                   }
@@ -132,7 +133,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#F2E9E4'"
+                      "Value": "'#E07A5F'"
                     }
                   }
                 }
@@ -152,12 +153,12 @@
                             "Entity": "PBI_Fato_Vendas"
                           }
                         },
-                        "Property": "OnlineOrderFlag"
+                        "Property": "Faixa Margem Operacional"
                       }
                     },
                     "Right": {
                       "Literal": {
-                        "Value": "1L"
+                        "Value": "'2. Ruim'"
                       }
                     }
                   }
@@ -169,140 +170,176 @@
         {
           "properties": {
             "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#F2E9E4'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "PBI_Fato_Vendas"
-                          }
-                        },
-                        "Property": "Tipo Venda"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'B2C'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#4A4E69'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "PBI_Fato_Vendas"
-                          }
-                        },
-                        "Property": "Tipo Venda"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'B2B'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B263B'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "labels": [
-        {
-          "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "14D"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "categoryAxis": [
-        {
-          "properties": {
-            "labelColor": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                      "ColorId": 2,
+                      "Percent": 0.4
                     }
                   }
                 }
               }
-            },
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "PBI_Fato_Vendas"
+                          }
+                        },
+                        "Property": "Faixa Margem Operacional"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'3. Objetivo'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#81B29A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "PBI_Fato_Vendas"
+                          }
+                        },
+                        "Property": "Faixa Margem Operacional"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'4. Boa'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#264653'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "PBI_Fato_Vendas"
+                          }
+                        },
+                        "Property": "Faixa Margem Operacional"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'5. Ótima'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F1C40F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "PBI_Fato_Vendas"
+                          }
+                        },
+                        "Property": "Faixa Margem Operacional"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'3. Regular'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "16D"
+                  "Value": "13D"
                 }
               }
             }
@@ -311,101 +348,6 @@
       ]
     },
     "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "titleWrap": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "'15'"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'$ Faturamento'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "subTitle": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "'12'"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'por Categoria'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "spacing": [
-        {
-          "properties": {
-            "customizeSpacing": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "verticalSpacing": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            },
-            "spaceBelowSubTitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "16D"
-                }
-              }
-            }
-          }
-        }
-      ],
       "background": [
         {
           "properties": {
@@ -415,47 +357,6 @@
                   "Value": "false"
                 }
               }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "padding": [
-        {
-          "properties": {
-            "top": {
-              "expr": {
-                "Literal": {
-                  "Value": "14D"
-                }
-              }
-            },
-            "bottom": {
-              "expr": {
-                "Literal": {
-                  "Value": "16D"
-                }
-              }
-            },
-            "left": {
-              "expr": {
-                "Literal": {
-                  "Value": "16D"
-                }
-              }
-            },
-            "right": {
-              "expr": {
-                "Literal": {
-                  "Value": "16D"
-                }
-              }
             }
           }
         }
@@ -463,13 +364,6 @@
       "border": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "color": {
               "solid": {
                 "color": {
@@ -480,73 +374,30 @@
                   }
                 }
               }
-            },
-            "radius": {
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
+                  "Value": "'% Distribuição da Margem'"
                 }
               }
             }
           }
         }
       ],
-      "dropShadow": [
+      "subTitle": [
         {
           "properties": {
-            "show": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "preset": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Custom'"
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "86D"
-                }
-              }
-            },
-            "shadowSpread": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "shadowBlur": {
-              "expr": {
-                "Literal": {
-                  "Value": "3D"
-                }
-              }
-            },
-            "angle": {
-              "expr": {
-                "Literal": {
-                  "Value": "90D"
-                }
-              }
-            },
-            "shadowDistance": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
+                  "Value": "' '"
                 }
               }
             }

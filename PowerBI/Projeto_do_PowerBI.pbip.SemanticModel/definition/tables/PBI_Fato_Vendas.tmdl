@@ -77,7 +77,7 @@ table PBI_Fato_Vendas
 
 	column PreçoUnitario
 		dataType: decimal
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
 		lineageTag: 12deb36e-6573-4c75-98c3-8c07c4b80ff6
 		summarizeBy: sum
 		sourceColumn: PreçoUnitario
@@ -88,20 +88,55 @@ table PBI_Fato_Vendas
 
 	column DescontoUnitario
 		dataType: double
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		formatString: #,0.00
 		lineageTag: 29143a94-999f-4919-841b-eb75692a7396
 		summarizeBy: sum
 		sourceColumn: DescontoUnitario
 
 		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
-
 	column 'Tipo Venda'
 		dataType: string
 		lineageTag: 4dee7357-3bfc-4837-84c9-0ad08f54bcb9
 		summarizeBy: none
 		sourceColumn: Tipo Venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Faixa Margem Operacional' =
+			
+			VAR PrecoPraticado = PBI_Fato_Vendas[PreçoUnitario]
+			VAR Desconto = PBI_Fato_Vendas[DescontoUnitario]
+			VAR PrecoLiquido = PrecoPraticado * (1 - Desconto)
+			VAR Custo = RELATED(PBI_Dim_Produto[Custo_Padrao])
+			VAR MargemLinha = DIVIDE(PrecoLiquido - Custo, PrecoLiquido)
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(MargemLinha), "Sem Margem",
+			    MargemLinha < 0.20, "1. Péssima",
+			    MargemLinha >= 0.20 && MargemLinha < 0.28, "2. Ruim",
+			    MargemLinha >= 0.28 && MargemLinha < 0.35, "3. Regular",
+			    MargemLinha >= 0.35 && MargemLinha < 0.50, "4. Boa",
+			    MargemLinha >= 0.50, "5. Ótima"
+			)
+		lineageTag: 0968f433-80bf-4606-9544-6dfb48e73b6c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lucro Produto' =
+			
+			-- 1. Descobre o preço real que o cliente pagou com o desconto aplicado
+			VAR PrecoLiquido = PBI_Fato_Vendas[PreçoUnitario] * (1 - PBI_Fato_Vendas[DescontoUnitario])
+			
+			-- 2. Subtrai o custo desse preço que já está líquido
+			RETURN
+			PrecoLiquido - RELATED(PBI_Dim_Produto[Custo_Padrao])
+		formatString: #,0.00
+		lineageTag: ad7d4fac-81e3-419f-aaab-81f78c075b85
+		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 
