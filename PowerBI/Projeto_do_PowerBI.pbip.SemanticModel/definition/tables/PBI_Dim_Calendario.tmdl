@@ -83,6 +83,7 @@ table PBI_Dim_Calendario
 
 	partition PBI_Dim_Calendario = m
 		mode: import
+		queryGroup: Dimensão
 		source =
 				let
 				  Origem = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),

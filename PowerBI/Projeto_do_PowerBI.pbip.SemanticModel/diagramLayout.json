@@ -5,13 +5,13 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 0
+        "y": 105.49115422884097
       },
       "nodes": [
         {
           "location": {
             "x": 0,
-            "y": 294.36845961075937
+            "y": 370.91778371136195
           },
           "nodeIndex": "PBI_Dim_Calendario",
           "nodeLineageTag": "3d0e48d2-af11-4b98-a137-14014e531234",
@@ -23,8 +23,8 @@
         },
         {
           "location": {
-            "x": 827.77933493158287,
-            "y": 261.82883679165082
+            "x": 344.26838347463843,
+            "y": 779.226381338291
           },
           "nodeIndex": "PBI_Dim_Cliente",
           "nodeLineageTag": "11cd3c67-82f1-4853-91fa-fb04e4458cc0",
@@ -36,8 +36,8 @@
         },
         {
           "location": {
-            "x": 412.40639977209969,
-            "y": 630.50168265776824
+            "x": 839.03370988116819,
+            "y": 550.62099305171228
           },
           "nodeIndex": "PBI_Dim_Produto",
           "nodeLineageTag": "7b984b70-0ffc-4de1-bb62-1f61b96dbb73",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 423.36176349028938,
-            "y": 153.09864820120509
+            "y": 229.64797230180767
           },
           "nodeIndex": "PBI_Fato_Vendas",
           "nodeLineageTag": "ed51dd8a-1e04-4fc7-aba6-0f678d58d194",
@@ -62,13 +62,26 @@
         },
         {
           "location": {
-            "x": 1111.779334931583,
-            "y": 313.7343999620166
+            "x": 13.60903668786932,
+            "y": 823.2314387658962
           },
           "nodeIndex": "_Medidas",
           "nodeLineageTag": "92e81126-6863-43b4-b14b-db55a53178d5",
           "size": {
             "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 889.51492452444518,
+            "y": 60.169903578598152
+          },
+          "nodeIndex": "PBI_Dim_Estoque",
+          "nodeLineageTag": "c5a74406-240b-4e4e-9f69-5803398fb53f",
+          "size": {
+            "height": 172.242832159459,
             "width": 234
           },
           "zIndex": 0

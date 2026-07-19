@@ -115,14 +115,17 @@ table PBI_Fato_Vendas
 			SWITCH(
 			    TRUE(),
 			    ISBLANK(MargemLinha), "Sem Margem",
-			    MargemLinha < 0.20, "1. Péssima",
-			    MargemLinha >= 0.20 && MargemLinha < 0.28, "2. Ruim",
-			    MargemLinha >= 0.28 && MargemLinha < 0.35, "3. Regular",
-			    MargemLinha >= 0.35 && MargemLinha < 0.50, "4. Boa",
-			    MargemLinha >= 0.50, "5. Ótima"
+			    MargemLinha < 0.20, "Pessima",
+			    MargemLinha >= 0.20 && MargemLinha < 0.28, "Ruim",
+			    MargemLinha >= 0.28 && MargemLinha < 0.35, "Regular",
+			    MargemLinha >= 0.35 && MargemLinha < 0.50, "Boa",
+			    MargemLinha >= 0.50, "Otima"
 			)
 		lineageTag: 0968f433-80bf-4606-9544-6dfb48e73b6c
 		summarizeBy: none
+		sortByColumn: 'Ordem Faixa Margem Operacional'
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
@@ -140,8 +143,33 @@ table PBI_Fato_Vendas
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Ordem Faixa Margem Operacional' =
+			
+			VAR PrecoPraticado = PBI_Fato_Vendas[PreçoUnitario]
+			VAR Desconto = PBI_Fato_Vendas[DescontoUnitario]
+			VAR PrecoLiquido = PrecoPraticado * (1 - Desconto)
+			VAR Custo = RELATED(PBI_Dim_Produto[Custo_Padrao])
+			VAR MargemLinha = DIVIDE(PrecoLiquido - Custo, PrecoLiquido)
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(MargemLinha), 0,
+			    MargemLinha < 0.20, 1,
+			    MargemLinha >= 0.20 && MargemLinha < 0.28, 2,
+			    MargemLinha >= 0.28 && MargemLinha < 0.35, 3,
+			    MargemLinha >= 0.35 && MargemLinha < 0.50, 4,
+			    MargemLinha >= 0.50, 5
+			)
+		formatString: 0
+		lineageTag: 34108d2e-83b7-44e6-82fa-13196a9304a2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition PBI_Fato_Vendas = m
 		mode: import
+		queryGroup: Fato
 		source =
 				let
 				  Origem = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),

@@ -37,10 +37,15 @@ table PBI_Dim_Cliente
 
 	partition PBI_Dim_Cliente = m
 		mode: import
+		queryGroup: Dimensão
 		source =
 				let
 				  Origem = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),
 				  #"Navegação 1" = Origem{[Schema = "dbo", Item = "PBI_Dim_Cliente"]}[Data]
 				in
 				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
 

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "c5e43c830f16b3f2f755",
+  "position": {
+    "x": 0,
+    "y": 208,
+    "z": 5000,
+    "height": 464,
+    "width": 1216,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "hundredPercentStackedBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PBI_Fato_Vendas"
+                    }
+                  },
+                  "Property": "Faixa Margem Operacional"
+                }
+              },
+              "queryRef": "PBI_Fato_Vendas.Faixa Margem Operacional",
+              "nativeQueryRef": "Faixa Margem Operacional",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Faturamento Com Cobertura"
+                }
+              },
+              "queryRef": "_Medidas.$ Faturamento Com Cobertura",
+              "nativeQueryRef": "$ Faturamento Com Cobertura"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Faturamento Sem Cobertura"
+                }
+              },
+              "queryRef": "_Medidas.$ Faturamento Sem Cobertura",
+              "nativeQueryRef": "$ Faturamento Sem Cobertura"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "$ Faturamento Com Cobertura"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.$ Faturamento Com Cobertura"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.$ Faturamento Sem Cobertura"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

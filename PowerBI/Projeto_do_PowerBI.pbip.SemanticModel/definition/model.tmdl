@@ -6,11 +6,19 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
+queryGroup Dimensão
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Fato
+
+	annotation PBI_QueryGroupOrder = 1
+
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["PBI_Dim_Calendario","PBI_Dim_Cliente","PBI_Dim_Produto","PBI_Fato_Vendas","_Medidas"]
+annotation PBI_QueryOrder = ["PBI_Dim_Calendario","PBI_Dim_Cliente","PBI_Dim_Estoque","PBI_Dim_Produto","PBI_Fato_Vendas","_Medidas"]
 
 ref table PBI_Dim_Calendario
 ref table DateTableTemplate_305a36f5-b522-41f9-ac04-c7495ce2fa85
@@ -19,6 +27,7 @@ ref table PBI_Dim_Cliente
 ref table PBI_Dim_Produto
 ref table PBI_Fato_Vendas
 ref table _Medidas
+ref table PBI_Dim_Estoque
 
 ref cultureInfo pt-BR
 

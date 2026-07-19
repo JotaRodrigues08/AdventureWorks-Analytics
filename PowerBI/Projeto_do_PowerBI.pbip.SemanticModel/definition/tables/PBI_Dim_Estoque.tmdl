@@ -1,0 +1,43 @@
+table PBI_Dim_Estoque
+	lineageTag: c5a74406-240b-4e4e-9f69-5803398fb53f
+
+	column 'Id Produto'
+		dataType: int64
+		formatString: 0
+		lineageTag: 15b55d34-dd79-4290-b781-c26a301eff4a
+		summarizeBy: none
+		sourceColumn: Id Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estoque Total'
+		dataType: int64
+		formatString: 0
+		lineageTag: d567eae2-b55d-4db4-b034-01ddf3239859
+		summarizeBy: sum
+		sourceColumn: Estoque Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Situação Atual' =
+			
+			IF(PBI_Dim_Estoque[Estoque Total] > 0, "Com Estoque", "Sem Estoque")
+		lineageTag: a01bdfc0-3ad2-4141-8517-41c7f148ae80
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PBI_Dim_Estoque = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				    Fonte = Sql.Database("LENOVO_JOTA\SQLEXPRESS", "AdventureWorks2025"),
+				    dbo_PBI_Dim_Estoque = Fonte{[Schema="dbo",Item="PBI_Dim_Estoque"]}[Data]
+				in
+				    dbo_PBI_Dim_Estoque
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

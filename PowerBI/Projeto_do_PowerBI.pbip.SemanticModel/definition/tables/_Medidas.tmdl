@@ -48,24 +48,69 @@ table _Medidas
 	measure '! Cabeçalho Painel' = "Acompanhamento Vendas"
 		lineageTag: f02bc5b2-6365-4680-8687-f83843c0345d
 
-	column 'Coluna 1'
-		dataType: string
-		isHidden
-		lineageTag: f73d7141-8f20-40d2-bf57-ea7086dd38f8
-		summarizeBy: none
-		sourceColumn: Coluna 1
+	measure 'Quantidade Total Vendida' =
+			
+			SUM(PBI_Fato_Vendas[QtdPedido])
+		formatString: 0
+		lineageTag: ab37ba4a-218c-4c2c-b4cd-cc0ae39e7dc2
 
-		changedProperty = IsHidden
+	measure 'Status Cobertura Estoque' = ```
+			
+			VAR vQtdVendida = [Quantidade Total Vendida]
+			VAR vEstoqueAtual =  SUM(PBI_Dim_Estoque[Estoque Total])
+			VAR vSaldo = vEstoqueAtual - vQtdVendida
+			
+			RETURN 
+			
+			IF(
+			    ISBLANK(vQtdVendida), 
+			    BLANK(),
+			    IF(
+			        vSaldo > 0 , 
+			        "Com Cobertura",
+			        "Sem Cobertura"
+			    )
+			)
+			```
+		lineageTag: f847d68c-cd72-4844-aeec-4e8b8289b105
 
-		annotation SummarizationSetBy = Automatic
+	measure '$ Faturamento Sem Cobertura' =
+			
+			CALCULATE(
+			    [$ Faturamento_Liquido],
+			        FILTER(
+			            VALUES(
+			                PBI_Dim_Produto[ProductID]),
+			                [Status Cobertura Estoque] = "Sem Cobertura"
+			        )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 75e86481-83fb-49cf-a8f4-195e8db824e6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '$ Faturamento Com Cobertura' =
+			
+			CALCULATE(
+			    [$ Faturamento_Liquido], // Substitua pelo nome real da sua medida de faturamento
+			    FILTER(
+			        VALUES('PBI_Dim_Produto'[ProductID]),
+			        [Status Cobertura Estoque] = "Com Cobertura"
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 5ca24397-3811-4c5c-aa8e-d4bf95b7833b
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
 	partition _Medidas = m
 		mode: import
 		source =
 				let
-				  Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t])
+				  Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Colunas Removidas" = Table.RemoveColumns(Origem,{"Coluna 1"})
 				in
-				  Origem
+				  #"Colunas Removidas"
 
 	annotation PBI_NavigationStepName = Navegação
 

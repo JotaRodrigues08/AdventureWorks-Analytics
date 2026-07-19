@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "8b691bbfbf446abbca15",
+  "position": {
+    "x": 0,
+    "y": 832,
+    "z": 6000,
+    "height": 208,
+    "width": 464,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "card",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "$ Faturamento Com Cobertura"
+                }
+              },
+              "queryRef": "_Medidas.$ Faturamento Com Cobertura",
+              "nativeQueryRef": "$ Faturamento Com Cobertura"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -15,3 +15,9 @@ relationship 34b9289d-4328-fc52-fcd2-64403cd476a9
 	fromColumn: PBI_Fato_Vendas.DataPedido
 	toColumn: PBI_Dim_Calendario.Data
 
+relationship 2837cb55-95ec-9383-ea17-f9fd2aa6a439
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: PBI_Dim_Estoque.'Id Produto'
+	toColumn: PBI_Dim_Produto.ProductID
+
